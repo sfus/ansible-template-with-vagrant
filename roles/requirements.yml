@@ -1,0 +1,13 @@
+# from galaxy
+- src: geerlingguy.nginx
+
+# # from github
+# - src: https://github.com/bennojoy/nginx
+
+# # from github with tag
+# - src: https://github.com/ANXS/mysql.git
+#   version: v1.0.3
+
+# # from github by ssh+git
+# - src: git@github.com:YOUR_NAME/REPO.git
+#   scm: git

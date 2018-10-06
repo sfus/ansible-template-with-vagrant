@@ -20,6 +20,8 @@ This is a template of Ansible with Vagrant.
 $ vagrant init bento/centos-7.2
 ```
 
+or `$ make init`
+
 ### Uncomment private_network in Vagrantfile
 
 ```Vagrantfile
@@ -33,6 +35,8 @@ $ vagrant init bento/centos-7.2
 ```
 $ vagrant up
 ```
+
+or `$ make up`
 
 ### Confirm SSH config
 
@@ -71,11 +75,43 @@ host_key_checking = False
 $ ansible all -i hosts -m ping
 ```
 
+or `$ make ping`
+
 ### SSH
 
 ```
 $ ssh vagrant@localhost -p 2222 -i .vagrant/machines/default/virtualbox/private_key
 ```
+
+### Run Ansible playbook
+
+#### Install roles from ansible-galaxy into ./roles directory
+
+```
+$ ansible-galaxy install -r roles/requirements.yml -p roles
+```
+
+or `$ make deps`
+
+#### site.yml
+
+```
+- name: site.yml sample
+  become: yes
+  hosts: vagrant-machine
+  roles:
+    - role: roles/geerlingguy.nginx
+``` 
+
+#### Run ansible-playbook with verbose log
+
+```
+$ ansible-playbook -i hosts site.yml --ask-become-pass -vv
+```
+
+or `$ make run`
+
+pw: `vagrant`
 
 
 ## Licence

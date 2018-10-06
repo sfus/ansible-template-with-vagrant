@@ -1,0 +1,5 @@
+- name: site.yml sample
+  become: yes
+  hosts: vagrant-machine
+  roles:
+    - role: roles/geerlingguy.nginx
